@@ -1,4 +1,4 @@
-package edu.luc.etl.cs313.android.shapes.android;
+.package edu.luc.etl.cs313.android.shapes.android;
 
 import edu.luc.etl.cs313.android.shapes.model.*;
 import android.annotation.SuppressLint;

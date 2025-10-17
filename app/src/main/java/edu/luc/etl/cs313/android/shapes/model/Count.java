@@ -10,17 +10,23 @@ public class Count implements Visitor<Integer> {
 
     @Override
     public Integer onPolygon(final Polygon p) {
-        return -1;
+        return ;
     }
 
     @Override
     public Integer onCircle(final Circle c) {
-        return -1;
+
+
+        return 1;
     }
 
     @Override
     public Integer onGroup(final Group g) {
-        return -1;
+        int count =1;
+        for(final Shape shape : g.getShapes()){
+            count += shape.accept(this);
+        }
+        return count;
     }
 
     @Override
@@ -34,17 +40,18 @@ public class Count implements Visitor<Integer> {
     }
 
     @Override
-    public Integer onFill(final Fill c) {
-        return -1;
+    public Integer onFill(final Fill f) {
+        return 1 + c.getShape().accept(this);
+
     }
 
     @Override
     public Integer onLocation(final Location l) {
-        return -1;
+        return 1 + l.getShape().accept(this);
     }
 
     @Override
     public Integer onStrokeColor(final StrokeColor c) {
-        return -1;
+        return 1 + c.getShape().accept(this);;
     }
 }
